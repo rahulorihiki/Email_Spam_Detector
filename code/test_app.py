@@ -13,7 +13,7 @@ class TestMain(unittest.TestCase):
     def test_spam_or_not(self):
         from main.routes import spam_or_not
         text = "Hello, I am Rahul"
-        expected = 0
+        expected = 'ham'
         result = spam_or_not(text)
         self.assertEqual(result , expected)
     
