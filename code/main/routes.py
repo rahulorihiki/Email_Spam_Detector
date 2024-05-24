@@ -9,6 +9,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib
 from io import BytesIO
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv() # take environment variables from .env.
 
 nltk.download('stopwords')
 stopwords = nltk.corpus.stopwords.words('english')
@@ -51,3 +55,8 @@ def home():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+@app.route("/get-mode")
+def get_mode():
+    return os.environ.get("MODE")
+
