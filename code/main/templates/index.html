@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+      integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE"
+      crossorigin="anonymous"
+    />
+    <title>Email Spam Checker</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../static/spam.png"
+            width="58"
+            height="50"
+            class="d-inline-block align-top"
+            alt="vdvsfdvsdfbv"
+            loading="lazy"
+          />
+          <h2
+            style="
+              display: inline-block;
+              font-style: italic;
+              font-family: cursive;
+            "
+          >
+            Spam Detector
+          </h2>
+        </a>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent2"
+          aria-controls="navbarSupportedContent2"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarSupportedContent2">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#faqwala">FAQs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('contact')}}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#messagesec">Check your Message</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- Starting the caraousal section -->
+    <!-- Creating slider or carousal -->
+    <div class="container2" ">
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../static/spambg3.jpg"
+            class="d-block w-100"
+            alt="..."
+            style="height: 670px"
+          />
+
+          <div
+            class="carousel-caption d-none d-md-block mb-5"
+            style="color: red"
+          >
+            <h5
+              style="
+                font-style: italic;
+                font-family: cursive;
+                font-size: xx-large;
+              "
+            >
+              Welcome to our website
+            </h5>
+            <p>
+              Our website helps to detect whether a message is a SPAM or a HAM.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-color: rgb(85, 148, 199)">
+          <center>
+            <img
+              src="../static/spambg1.png"
+              class="d-block w-100"
+              alt="..."
+              style="height: 670px; max-width: 1200px"
+            />
+          </center>
+        </div>
+        <div class="carousel-item" style="background-color: rgb(85, 148, 199)">
+          <center>
+            <img
+              src="../static/spambg222.jpg"
+              class="d-block w-100"
+              alt="..."
+              style="height: 670px; max-width: 1200px"
+            />
+          </center>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Starting the Message typing textarea code -->
+
+    <section
+      style="background-image: linear-gradient(to left, white, black)"
+      id="messagesec"
+    >
+      <div class="container py-5 text-dark">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-6">
+            <div class="card">
+              <div class="card-body p-4">
+                <div class="w-100">
+                  <form method="POST" action="/">
+                    <!-- Name input -->
+
+                    <!-- Message input -->
+                    <div class="form-outline mb-4">
+                      <h4 class="my-3">
+                        Enter your Message to be checked here :
+                      </h4>
+                      <textarea
+                        class="form-control mt-2"
+                        id="form4Example3"
+                        rows="6"
+                        name="email_data"
+                      ></textarea>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-block mb-4"
+                    >
+                      Send
+                    </button>
+                  </form>
+                  {% if result == "xxx" %}
+                  <h5>Please send your message and find your result here</h5>
+                  {% elif result == "spam" %}
+                  <div class="alert alert-danger" role="alert">
+                    <h5>Result : This Message is a {{result}}</h5>
+                  </div>
+                  {% else %}
+                  <div class="alert alert-success" role="alert">
+                    <h5>Result : This Message is a NOT a spam</h5>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Adding a list of Safety tips against spams -->
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">
+        3 Simple Ways You Can Fight Spam and Protect Yourself
+      </h2>
+
+      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col">
+          <div
+            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+            style="background-image: url('../static/card1.jpg')"
+          >
+            <div
+              class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+            >
+              <h6 class="pt-5 mt-5 mb-4 display-6 lh-1">
+                Never give out or post your email address publicly
+              </h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div
+            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+            style="background-image: url('../static/card2.jpg')"
+          >
+            <div
+              class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+            >
+              <h6 class="pt-5 mt-5 mb-4 display-6 lh-1">
+                Do not reply to spam messages
+              </h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div
+            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+            style="background-image: url('../static/card3.jpg')"
+          >
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+              <h6 class="pt-5 mt-5 mb-4 display-6 lh-1">
+                Download spam filtering tools and anti-virus software
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Adding the FAQ Section here -->
+    <div class="container my-5" id="faqwala">
+      <div
+        class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
+      >
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+          <article class="my-3" id="accordion">
+            <div
+              class="bd-heading sticky-xl-top align-self-start mt-1 mb-3 mb-xl-2"
+            >
+              <h3 class="mb-5">Frequently asked Questions (FAQs)</h3>
+            </div>
+
+            <div>
+              <div class="bd-example-snippet bd-code-snippet">
+                <div class="bd-example">
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h4 class="accordion-header" id="headingOne">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne"
+                          aria-expanded="false"
+                          aria-controls="collapseOne"
+                        >
+                          Why do I get so much spam?
+                        </button>
+                      </h4>
+                      <div
+                        id="collapseOne"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample"
+                        style=""
+                      >
+                        <div class="accordion-body">
+                          Spam is cheap marketing, sending messages to millions
+                          of people for costs of less than a dollar. This is
+                          only possible because spammers shift the burden of
+                          cost from the sender to the receiver. Sadly some
+                          people also actually buy some of the goods offered.
+                          All of this means that spammers are not likely to stop
+                          spamming in the near future. So PLEASE DON'T BUY
+                          ANYTHING ADVERTISED BY SPAM! This will only make them
+                          spam more. If there is something advertised by spam
+                          that actually interests you, find it somewhere else
+                          on-line! Take the boulder pledge and avoid buying
+                          products promoted by spam.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h4 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseTwo"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          If I don't give out my email address, will I avoid
+                          spam?
+                        </button>
+                      </h4>
+                      <div
+                        id="collapseTwo"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          This is a well known myth. Of course that strategy
+                          will have some impact in the short run, but over a
+                          longer period spammers will get your address one way
+                          or another. It just takes one message in a guest book,
+                          one post in a newsgroup, one on-line product purchase,
+                          or one subscription to a newsletter, and your address
+                          can be shared and sold all over the web. For less than
+                          $100 spammers can buy 15 million email addresses and
+                          soon your address will be among them, sadly...
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h4 class="accordion-header" id="headingThree">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree"
+                          aria-expanded="false"
+                          aria-controls="collapseThree"
+                        >
+                          How does the spammer get my email address?
+                        </button>
+                      </h4>
+                      <div
+                        id="collapseThree"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          Spammers have a lot of different ways to get your
+                          address. The only thing you can be sure of is that
+                          they will get it sooner or later.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+          <img
+            class="rounded-lg-3"
+            src="../static/faq.jpg"
+            alt=""
+            width="720"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Adding a Footer here -->
+    <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">Features</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">About</a>
+          </li>
+        </ul>
+        <p class="text-center text-muted">© 2022 Company, Inc</p>
+      </footer>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
