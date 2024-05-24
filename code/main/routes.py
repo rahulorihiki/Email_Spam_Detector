@@ -31,9 +31,7 @@ email_data.columns = ["output" , "email_message"]
 tfid_vect = TfidfVectorizer(analyzer=clean_text)
 x_tfid = tfid_vect.fit_transform(email_data["email_message"])
 
-# mLink = "C:\\Users\\gokul\\OneDrive\\Desktop\\Projects\\SPAM_DETECTOR_Rahul_data_science_june_2022_project\\spam-model-final.joblib"
 mfile2 = "../spam-model-final.joblib"
-# mfile = BytesIO(requests.get(mLink).content)
 rfc = joblib.load(mfile2)
 
 def spam_or_not(text):
