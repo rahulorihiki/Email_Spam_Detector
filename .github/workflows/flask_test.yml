@@ -1,0 +1,40 @@
+name: Flask App Tests
+
+# What the below code does is that it will run the tests on the code whenever a pull request is made to the master branch.
+on:
+  pull_request: # like pull_request there are many other events like push, release, etc which he shows in the video.
+    branches:
+      - master
+
+jobs:
+  test: # similarly we can have many other such tests that you can explore yourself.
+    runs-on: ubuntu-latest #Github by default has many runners like ubuntu, windows, macos, etc. You can choose any of them. if we write a list of runners then it will run the tests on all the runners mentioned in the list.
+
+    defaults:
+      run:
+        working-directory: ./code/ # This is the directory where the code is present.
+
+    strategy:
+      matrix:
+        python-version: [3.9] # This will run the tests on all the python versions mentioned in the list. Since we have used matrix then it will run the entire script for each python version mentioned in the list.
+
+    env:
+      MODE: "dev" # In this way we can even set environment variables.
+
+    # Above this we are just setting up the environment for the tests to run. below we are going to tell what are the steps we need to follow to run the tests,deployment, etc. So whatever we do below is not for running the entire project but just for running the tests.
+    steps:
+      - uses: actions/checkout@v3 # This is a predefined action provided by GitHub, which checks out your repository so your workflow can access its contents. In other words, it's copying the code from your GitHub repository to the runner (the virtual machine that executes your workflow), so that the subsequent steps in your workflow can operate on your code. The @v2 specifies the version of the checkout action to use.
+      - name: Set up Python
+        uses: actions/setup-python@v4 # sets up a Python environment for use in actions by installing a version of Python and adding it to the PATH. The @v2 specifies the version of the setup-python action to use.
+        with:
+          python-version: ${{ matrix.python-version }} # By using dollar and two curly braces we can access the variables defined in the workflow file.
+
+      - name: Install dependencies
+        run:
+          | # This "|" is a multi-line command. It is used to run multiple commands in a single step.
+          python -m pip install --upgrade pip
+          pip install -r ../requirements.txt
+      # Here we wrote ../requirements.txt because we earlier mentioned the working directory as ./code/ so we need to go one directory back to access the requirements.txt file.
+      - name: Test App Code
+        run: python ./test_app.py # This is the command to run the tests.
+
