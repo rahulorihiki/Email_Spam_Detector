@@ -19,7 +19,8 @@ jobs:
         python-version: [3.9] # This will run the tests on all the python versions mentioned in the list. Since we have used matrix then it will run the entire script for each python version mentioned in the list.
 
     env:
-      MODE: "dev" # In this way we can even set environment variables.
+      #   MODE: "dev" # In this way we can even set environment variables.
+      MODE: ${{secrets.MODE}} # This is called github secret key. In the above approach of the above line the password is visible to everyone but in this approach the password is hidden. You can create a secret key by going to the settings of your repository and then to the environments tab then create a new environment variable.
 
     # Above this we are just setting up the environment for the tests to run. below we are going to tell what are the steps we need to follow to run the tests,deployment, etc. So whatever we do below is not for running the entire project but just for running the tests.
     steps:
