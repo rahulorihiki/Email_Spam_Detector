@@ -1,7 +1,7 @@
 import unittest
 import os
 
-# I want to test whether the clean_text function is working correclty or not
+# I want to test whether the clean_text function is working correclty or not.
 class TestMain(unittest.TestCase):
     def test_clean_text(self):
         from main.routes import clean_text
